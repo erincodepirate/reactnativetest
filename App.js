@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// React Native Counter Example using Hooks!
 
-export default function App() {
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+
+
+const App = () => {
+  const words = ["sup", "hello", "yo"]
+  const [word, setWord] = useState("");
+
+  function changeWord() {
+    let w = words[Math.floor(words.length * Math.random())]
+    setWord(w)
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>{word}</Text>
+      <Button
+        onPress={() => changeWord()}
+        title="Click me!"
+      />
     </View>
   );
-}
+};
 
+// React Native Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
+    alignItems: 'center'
+  }
 });
+
+export default App;
